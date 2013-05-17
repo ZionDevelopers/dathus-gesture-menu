@@ -1,0 +1,7 @@
+"AddonInfo"
+{
+	"name"			"Nexus Gesture Menu"
+	"version"		"1.1"
+	"author_name"		"Nexus [BR]"
+	"info"			"A simple GUI for the with all ACT Command know working with Garry's Mod 13, With Feature like, Menu Bind Key and chat commands."
+}
