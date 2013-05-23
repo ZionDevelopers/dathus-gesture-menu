@@ -20,8 +20,6 @@
  Version 1.1.0 by Nexus [BR] on 17-05-2013 02:24 PM
 ]]
 
-local GestureMenu
-
 -- Setup Gesture Menu Action	
 local function NexusGestureMenuAction(len)
 	-- Get Command
@@ -43,6 +41,13 @@ net.Receive("NexusGestureMenuOpen", NexusGestureMenuOpen)
 
 -- Setup Gesture Menu
 local function OpenNexusGestureMenu()
+
+	-- If Gesture Menu is already loaded
+	if GestureMenu ~= nil then
+		-- Make it Invisible
+		GestureMenu:SetVisible(false)
+	end
+	
 	-- Setup Menu Initial Height
 	local MenuHeight = 22
 	
@@ -56,11 +61,10 @@ local function OpenNexusGestureMenu()
 	end
 	
 	-- Setup Gesture Menu Window
-	GestureMenu = vgui.Create("DFrame")
+	local GestureMenu = vgui.Create("DFrame")
 	GestureMenu:SetPos((ScrW()/4)-100,(ScrH()/2)-(MenuHeight/2))
 	GestureMenu:SetSize(220, MenuHeight)
 	GestureMenu:SetTitle("Nexus Gesture Menu")
-	GestureMenu:SetDeleteOnClose(true)
 	
 	-- Reset I Counter
 	i = 0
