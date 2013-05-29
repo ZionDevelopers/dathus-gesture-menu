@@ -20,12 +20,65 @@
  Version 1.1.0 by Nexus [BR] on 17-05-2013 02:24 PM
 ]]
 
+-- Setup Vars
+local loopCurrentGesture = ""
+local loopGesture = false
+
+-- Setup Do Gesture Function
+local function DoGesture(gesture)
+	-- Check if Player are Taunting
+	if not LocalPlayer():IsPlayingTaunt() then
+		-- If there is Sound to Play
+		if NexusGestureMenuSounds[gesture] ~= "" and GetConVar("NexusGMSound"):GetInt() == 1 then
+			-- Start Packet
+			net.Start("NexusGestureMenuPlaySound")
+			-- Send Soudns Table
+			net.WriteTable(NexusGestureMenuSounds[gesture])
+			-- Send to the Server
+			net.SendToServer()
+		end
+		
+		-- Run ACT
+		RunConsoleCommand("act", gesture)
+	end
+end
+
+-- Setup Loop
+local function GestureLoop()
+	if GetConVar("NexusGMLoop"):GetInt() == 1 and not LocalPlayer():IsPlayingTaunt() then
+		DoGesture(loopCurrentGesture)
+	elseif GetConVar("NexusGMLoop"):GetInt() == 0 then
+		loopGesture = false
+		loopCurrentGesture = ""
+		timer.Destroy("loopGesture")	
+	end
+end
+
+-- Setup Do Gesture Function
+local function ProcessGesture(gesture)
+	-- Check if Loop is Turned OFF
+	if GetConVar("NexusGMLoop"):GetInt() == 0 and loopGesture == false then
+		-- Run ACT
+		DoGesture(gesture)
+	elseif GetConVar("NexusGMLoop"):GetInt() == 1 and loopGesture == false then
+		loopGesture = true
+		loopCurrentGesture = gesture
+		-- Run ACT
+		DoGesture(gesture)
+		timer.Create("loopGesture", 0.5, 0, GestureLoop)
+	elseif GetConVar("NexusGMLoop"):GetInt() == 0 and loopGesture == true then
+		loopGesture = false
+		loopCurrentGesture = ""
+		timer.Destroy("loopGesture")
+	end	
+end
+
 -- Setup Gesture Menu Action	
 local function NexusGestureMenuAction(len)
 	-- Get Command
 	local Command = net.ReadString()
 	-- Run ACT
-	RunConsoleCommand("act", Command)
+	ProcessGesture(Command)
 end
 
 -- Setup Gesture Menu Action	
@@ -45,11 +98,11 @@ local function OpenNexusGestureMenu()
 	-- If Gesture Menu is already loaded
 	if GestureMenu ~= nil then
 		-- Make it Invisible
-		GestureMenu:SetVisible(false)
+		GestureMenu:Close()
 	end
 	
 	-- Setup Menu Initial Height
-	local MenuHeight = 22
+	local MenuHeight = 40
 	
 	-- Loop on Act List
 	for Command, Label in pairs(NexusGestureMenuOptions) do
@@ -85,14 +138,28 @@ local function OpenNexusGestureMenu()
 			Button:SetPos(20,65+(28*(i-1)))
 			Button:SetTooltip("/"..ChatCommand)
 			Button.DoClick = function()
-				-- Run ACT
-				RunConsoleCommand("act", Command)
+				ProcessGesture(Command)
 			end
 			
 			-- Increase I Counter
 			i = i + 1
 		end
 	end
+	
+	
+	local loop = vgui.Create("DCheckBoxLabel", GestureMenu)
+	loop:SetPos(50, MenuHeight-30)
+	loop:SetText("Loop") 
+	loop:SetConVar("NexusGMLoop")
+	loop:SetValue(tonumber(GetConVar("NexusGMLoop"):GetInt()))  
+	loop:SizeToContents()
+	
+	local sound = vgui.Create("DCheckBoxLabel", GestureMenu)
+	sound:SetPos(110, MenuHeight-30)
+	sound:SetText("Sound") 
+	sound:SetConVar("NexusGMSound")
+	sound:SetValue(tonumber(GetConVar("NexusGMSound"):GetInt()))  
+	sound:SizeToContents()
 	
 	-- Finish to Setup Gesture Menu Window
 	GestureMenu:SetVisible(true)

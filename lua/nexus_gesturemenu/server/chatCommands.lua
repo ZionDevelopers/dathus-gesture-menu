@@ -20,31 +20,59 @@
  Version 1.1.0 by Nexus [BR] on 17-05-2013 02:24 PM
 ]]
 
+
 -- Setup Gesture by Chat
 local function GestureByChat (ply, text, isTeamChat) 
 	-- Convert to Lower
 	text = text:lower()
 	
+	local params = {}
+	local param = ""
+	local command = ""
+	local Test = ""
+	
 	-- If is a Command
 	if text:sub(1,1) == "/" then
 	
-		local Test
+		-- Check if got Params
+		if string.find(text," ") then
+			-- Split Space into Params
+			params = text:split(" ")
+			-- Get Command
+			command = string.lower(string.Replace(params[1], "/", ""))
+			-- Check if there is a parameter
+			if(params[2] ~= nil) then
+				-- Define param
+				param = string.lower(params[2])
+			else
+				command = string.lower(string.Replace(text, "/", ""))
+				param = ""
+			end
+		else
+			command = string.lower(string.Replace(text, "/", ""))
+			param = ""			
+		end
 		
 		-- Loop on all Acts
-		for Command, Label in pairs(NexusGestureMenuOptions) do
+		for Gesture, Label in pairs(NexusGestureMenuOptions) do
 			-- Remove Spaces
 			Test = string.Replace(Label, " ", "")
 			-- Convert string to Lower
 			Test = string.lower(Test)
-			
+
 			-- if This Act is the User Command
-			if text:sub(2) == Test then	
+			if command == Test then	
 				-- Start Connection			
 				net.Start("NexusGestureMenuAction")
 				-- Write Command
-				net.WriteString(Command)
-				-- Send Command To Player
-				net.Send(ply)
+				net.WriteString(Gesture)
+				
+				if((param == "all" or param == "*") and ply:IsAdmin()) then
+					-- Send Command To Player
+					net.Broadcast()
+				else 
+					net.Send(ply)	
+				end
 				
 				-- Delete chat Entry
 				return ""

@@ -33,14 +33,19 @@ if SERVER then
 	-- Add Network Strings to Pool
 	util.AddNetworkString("NexusGestureMenuOpen")
 	util.AddNetworkString("NexusGestureMenuAction")
+	util.AddNetworkString("NexusGestureMenuPlaySound")
 	
 	-- Require Chat Commands
 	include("nexus_gesturemenu/server/chatCommands.lua")
 	-- Require NumPad Register
 	include("nexus_gesturemenu/server/numPad.lua")
+	-- Require Core
+	include("nexus_gesturemenu/server/core.lua")
 else	
 	-- Register Client ConVar
 	CreateClientConVar("NexusGMBindKey", 0, true, false)
+	CreateClientConVar("NexusGMLoop", 0, true, false)
+	CreateClientConVar("NexusGMSound", 0, true, false)
 	
 	-- Require Gesture Menu UI
 	include("nexus_gesturemenu/client/ui.lua")	
