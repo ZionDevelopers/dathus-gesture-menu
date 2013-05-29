@@ -17,7 +17,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
  $Id$
- Version 1.1.0 by Nexus [BR] on 17-05-2013 02:24 PM
+ Version 1.2.0 by Nexus [BR] on 29-05-2013 03:34 PM
 ]]
 
 -- Setup Act List
