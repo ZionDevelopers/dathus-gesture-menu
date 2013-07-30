@@ -55,7 +55,7 @@ local function GestureLoop()
 end
 
 -- Setup Do Gesture Function
-local function ProcessGesture(gesture)
+function ProcessGesture(gesture)
 	-- Check if Loop is Turned OFF
 	if GetConVar("NexusGMLoop"):GetInt() == 0 and loopGesture == false then
 		-- Run ACT
@@ -96,78 +96,76 @@ net.Receive("NexusGestureMenuOpen", NexusGestureMenuOpen)
 local function OpenNexusGestureMenu()
 
 	-- If Gesture Menu is already loaded
-	if GestureMenu ~= nil then
-		-- Make it Invisible
-		GestureMenu:Close()
-	end
-	
-	-- Setup Menu Initial Height
-	local MenuHeight = 40
-	
-	-- Loop on Act List
-	for Command, Label in pairs(NexusGestureMenuOptions) do
-		-- If Command is Valid
-		if Command ~= nil then
-			-- Increase the Menu Height
-			MenuHeight = MenuHeight + 30
-		end
-	end
-	
-	-- Setup Gesture Menu Window
-	local GestureMenu = vgui.Create("DFrame")
-	GestureMenu:SetPos((ScrW()/4)-100,(ScrH()/2)-(MenuHeight/2))
-	GestureMenu:SetSize(220, MenuHeight)
-	GestureMenu:SetTitle("Nexus Gesture Menu")
-	
-	-- Reset I Counter
-	i = 0
-	
-	-- Loop on Act List
-	for Command, Label in pairs(NexusGestureMenuOptions) do
-		-- If Command is Valid
-		if(Command ~= nil) then
-			-- Remove Spaces
-			ChatCommand = string.Replace(Label, " ", "")
-			-- Convert string to Lower
-			ChatCommand = string.lower(ChatCommand)
-			
-			-- Setup Act Button
-			local Button = vgui.Create("DButton", GestureMenu)
-			Button:SetText(Label)
-			Button:SetSize(180,20)
-			Button:SetPos(20,65+(28*(i-1)))
-			Button:SetTooltip("/"..ChatCommand)
-			Button.DoClick = function()
-				ProcessGesture(Command)
+	if GestureMenu == nil then
+		-- Setup Menu Initial Height
+		local MenuHeight = 40
+		
+		-- Loop on Act List
+		for Command, Label in pairs(NexusGestureMenuOptions) do
+			-- If Command is Valid
+			if Command ~= nil then
+				-- Increase the Menu Height
+				MenuHeight = MenuHeight + 30
 			end
-			
-			-- Increase I Counter
-			i = i + 1
 		end
+		
+		-- Setup Gesture Menu Window
+		local GestureMenu = vgui.Create("DFrame")
+		GestureMenu:SetPos((ScrW()/4)-100,(ScrH()/2)-(MenuHeight/2))
+		GestureMenu:SetSize(220, MenuHeight)
+		GestureMenu:SetTitle("Nexus Gesture Menu")
+		GestureMenu:SetDeleteOnClose(true)
+		
+		-- Reset I Counter
+		i = 0
+		
+		-- Loop on Act List
+		for Command, Label in pairs(NexusGestureMenuOptions) do
+			-- If Command is Valid
+			if(Command ~= nil) then
+				-- Remove Spaces
+				ChatCommand = string.Replace(Label, " ", "")
+				-- Convert string to Lower
+				ChatCommand = string.lower(ChatCommand)
+				
+				-- Setup Act Button
+				local Button = vgui.Create("DButton", GestureMenu)
+				Button:SetText(Label)
+				Button:SetSize(180,20)
+				Button:SetPos(20,65+(28*(i-1)))
+				Button:SetTooltip("/"..ChatCommand)
+				Button.DoClick = function()
+					ProcessGesture(Command)
+				end
+				
+				-- Increase I Counter
+				i = i + 1
+			end
+		end
+		
+		
+		local loop = vgui.Create("DCheckBoxLabel", GestureMenu)
+		loop:SetPos(50, MenuHeight-30)
+		loop:SetText("Loop") 
+		loop:SetConVar("NexusGMLoop")
+		loop:SetValue(tonumber(GetConVar("NexusGMLoop"):GetInt()))  
+		loop:SizeToContents()
+		
+		local sound = vgui.Create("DCheckBoxLabel", GestureMenu)
+		sound:SetPos(110, MenuHeight-30)
+		sound:SetText("Sound") 
+		sound:SetConVar("NexusGMSound")
+		sound:SetValue(tonumber(GetConVar("NexusGMSound"):GetInt()))  
+		sound:SizeToContents()
+		
+		-- Finish to Setup Gesture Menu Window
+		GestureMenu:SetVisible(true)
+		GestureMenu:SetDraggable(true)
+		GestureMenu:ShowCloseButton(true)
+		
+		-- Create A PopUp Window for Gesture Menu
+		GestureMenu:MakePopup()
 	end
-	
-	
-	local loop = vgui.Create("DCheckBoxLabel", GestureMenu)
-	loop:SetPos(50, MenuHeight-30)
-	loop:SetText("Loop") 
-	loop:SetConVar("NexusGMLoop")
-	loop:SetValue(tonumber(GetConVar("NexusGMLoop"):GetInt()))  
-	loop:SizeToContents()
-	
-	local sound = vgui.Create("DCheckBoxLabel", GestureMenu)
-	sound:SetPos(110, MenuHeight-30)
-	sound:SetText("Sound") 
-	sound:SetConVar("NexusGMSound")
-	sound:SetValue(tonumber(GetConVar("NexusGMSound"):GetInt()))  
-	sound:SizeToContents()
-	
-	-- Finish to Setup Gesture Menu Window
-	GestureMenu:SetVisible(true)
-	GestureMenu:SetDraggable(true)
-	GestureMenu:ShowCloseButton(true)
-	
-	-- Create A PopUp Window for Gesture Menu
-	GestureMenu:MakePopup()
 end
 
 -- Add Gesture Menu Command

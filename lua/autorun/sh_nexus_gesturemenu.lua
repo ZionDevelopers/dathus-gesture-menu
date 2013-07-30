@@ -17,7 +17,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
  $Id$
- Version 1.2.0 by Nexus [BR] on 29-05-2013 03:34 PM
+ Version 1.2.1 by Nexus [BR] on 30-07-2013 10:38 AM
 ]]
 
 -- Require Gesture List
@@ -28,6 +28,7 @@ if SERVER then
 	AddCSLuaFile()
 	AddCSLuaFile("nexus_gesturemenu/client/ui.lua")
 	AddCSLuaFile("nexus_gesturemenu/client/panel.lua")
+	AddCSLuaFile("nexus_gesturemenu/client/context-menu.lua")
 	AddCSLuaFile("nexus_gesturemenu/shared/gestures.lua")
 	
 	-- Add Network Strings to Pool
@@ -51,4 +52,6 @@ else
 	include("nexus_gesturemenu/client/ui.lua")	
 	-- Require Gesture Menu Panel
 	include("nexus_gesturemenu/client/panel.lua")
+	-- Require Gesture Menu Context-Menu
+	include("nexus_gesturemenu/client/context-menu.lua")
 end

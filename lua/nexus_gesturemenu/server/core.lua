@@ -17,7 +17,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
  $Id$
- Version 1.2.0 by Nexus [BR] on 29-05-2013 03:34 PM
+ Version 1.2.1 by Nexus [BR] on 22-07-2013 10:02 AM
 ]]
 
 -- Setup Sound Function
@@ -29,7 +29,7 @@ local function NexusGesturePlaySound(len, ply)
 	local sound = ""
 	
 	-- If Player model is Female
-	if (string.find(model, "female") or string.find(model, "mossman") or string.find(model, "alyx")) and sounds["female"] ~= nil then
+	if (string.find(model, "female") or string.find(model, "mossman") or string.find(model, "alyx") or string.find(model, "chell") or string.find(model, "police_fem")) and sounds["female"] ~= nil then
 		-- Get a Random Sound
 		sound = table.Random(sounds["female"])
 	else

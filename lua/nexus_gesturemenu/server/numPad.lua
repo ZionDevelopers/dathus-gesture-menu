@@ -23,7 +23,7 @@
 -- Add Command
 concommand.Add("NexusGMRegisterKey", function(ply, com, args)
 	-- If Key Pressed
-	if ply.NexusGMKeyID != nil then
+	if ply.NexusGMKeyID ~= nil then
 		-- Remove Keypad ID
 		numpad.Remove( ply.NexusGMKeyID )
 	end
