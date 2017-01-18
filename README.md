@@ -15,7 +15,7 @@ Just download this addon by clicking on Download ZIP and extract the addon in ``
 
 ### Workshop Ready!
 
-Nexus Gesture Menu is now available via the Steam Workshop! Go to [its Workshop page][workshop].
+Nexus Gesture Menu is now available via the Steam Workshop! Go to [its Workshop page][workshop] and press `Subscribe`, and it will automatically appear in Garry's Mod.
 
 ### Manual Installation
 
