@@ -10,9 +10,9 @@ A [Garry's Mod][] Addon that show a Gesture Menu with all ACT Commands Know.
 * Chat commands support like: /dance /sexydance /hellyeah and etc.
 * Almost all gesture have sound now, It do a different sound if your model is Male or Female.
 * Loop Feature.
-* Admin Gesture command all Players: /dance * or /dance all, it works with any Gesture.
+* Admin gesture command all players: /dance * or /dance all, it works with any Gesture.
 * To stop/start Sound/Loop just select the Checkbox Sound or Loop.
-* New "Fancy" Context menu, Just Press C Button and goto Nexus Gestures.
+* New "Fancy" context menu, Just press C button and go to Nexus Gestures.
 
 ### Setup
 
