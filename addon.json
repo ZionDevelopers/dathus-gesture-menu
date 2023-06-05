@@ -18,6 +18,8 @@
 		"*.md",
 		"*.bat",
 		"nbproject*",
-		"COPYING"
+		"COPYING",
+		"logo.jpg",
+		"logo.fw.png"
 	]
 }
