@@ -33,7 +33,7 @@ Msg( "\n/====================================\\\n")
 Msg( "||       Dathus' Gesture Menu       ||\n" )
 Msg( "||----------------------------------||\n" )
 loadingLog("Version 1.3.0")
-loadingLog("Updated on 2023-06-05 8:00 PM")
+loadingLog("Updated on 2023-06-05 9:00 PM")
 Msg( "\\====================================/\n\n" )
 
 if SERVER then
