@@ -44,6 +44,6 @@ hook.Add( "PopulateMenuBar", "", function( menubar )
 	
 	mbar:AddSpacer()
 	
-	mbar:AddCVar( "Gestures Loop", "DathusGMLoop", "1", "0" )
-	mbar:AddCVar( "Gestures Sound", "DathusGMSound", "1", "0" )		
+	mbar:AddCVar( "Loop", "DathusGMLoop", "1", "0" )
+	mbar:AddCVar( "Sound", "DathusGMSound", "1", "0" )		
 end )
