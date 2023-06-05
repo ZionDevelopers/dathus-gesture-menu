@@ -23,7 +23,7 @@
 
 -- Setup Apply Key Function
 local function applyGestureMenuKey()
-	RunConsoleCommand( "GMRegisterKey", GetConVarNumber("GMBindKey") )
+	RunConsoleCommand( "DathusGMRegisterKey", GetConVarNumber("DathusGMBindKey") )
 end 
 	
 -- Setup Panel
@@ -32,7 +32,7 @@ local function buildPanelKey(panel)
 	panel:ClearControls()
 	-- Add Panel Elements
 	panel:AddControl("Header", {Text = "Key"})	
-	panel:AddControl("Numpad", {Label = "Gesture Menu Key", Command = "GMBindKey", ButtonSize = "18"})	
+	panel:AddControl("Numpad", {Label = "Gesture Menu Key", Command = "DathusGMBindKey", ButtonSize = "18"})	
 	
 	-- Add Buton to Apply									 
 	local Button = vgui.Create("DButton") 
