@@ -1,7 +1,7 @@
 --[[ 
- Nexus Gesture Menu
+ Dathus' Gesture Menu
  
- Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+ Copyright (c) 2013-2023 Dathus [BR] <http://www.Dathusbr.net>
  
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -17,34 +17,34 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
  $Id$
- Version 1.2.0 by Nexus [BR] on 29-05-2013 03:34 PM
+ Version 1.3.X by Dathus [BR] on 2023-06-05 08:00 PM (GMT -03)
 ]]
 
 -- Setup Act List
-NexusGestureMenuOptions = {}
-NexusGestureMenuOptions["dance"] = "Dance"
-NexusGestureMenuOptions["muscle"] = "Sexy Dance"
-NexusGestureMenuOptions["robot"] = "Robot Dance"
-NexusGestureMenuOptions["pers"] = "Lion Pose"
-NexusGestureMenuOptions["zombie"] = "Zombie"
-NexusGestureMenuOptions["agree"] = "Agree"
-NexusGestureMenuOptions["disagree"] = "Disagree"
-NexusGestureMenuOptions["salute"] = "Salute"
-NexusGestureMenuOptions["bow"] = "Bow"
-NexusGestureMenuOptions["wave"] = "Hello"
-NexusGestureMenuOptions["becon"] = "Follow"
-NexusGestureMenuOptions["halt"] = "Halt"
-NexusGestureMenuOptions["group"] = "Group"
-NexusGestureMenuOptions["forward"] = "Forward"
-NexusGestureMenuOptions["cheer"] = "Hell Yeah"
-NexusGestureMenuOptions["laugh"] = "Laugh"
+DathusGestureMenuOptions = {}
+DathusGestureMenuOptions["dance"] = "Dance"
+DathusGestureMenuOptions["muscle"] = "Sexy Dance"
+DathusGestureMenuOptions["robot"] = "Robot Dance"
+DathusGestureMenuOptions["pers"] = "Crane Kick"
+DathusGestureMenuOptions["zombie"] = "Zombie"
+DathusGestureMenuOptions["agree"] = "Agree"
+DathusGestureMenuOptions["disagree"] = "Disagree"
+DathusGestureMenuOptions["salute"] = "Salute"
+DathusGestureMenuOptions["bow"] = "Bow"
+DathusGestureMenuOptions["wave"] = "Hello"
+DathusGestureMenuOptions["becon"] = "Follow"
+DathusGestureMenuOptions["halt"] = "Halt"
+DathusGestureMenuOptions["group"] = "Group"
+DathusGestureMenuOptions["forward"] = "Forward"
+DathusGestureMenuOptions["cheer"] = "Hell Yeah"
+DathusGestureMenuOptions["laugh"] = "Laugh"
 
-NexusGestureMenuSounds = {}
-NexusGestureMenuSounds["dance"] = ""
-NexusGestureMenuSounds["muscle"] = ""
-NexusGestureMenuSounds["robot"] = ""
-NexusGestureMenuSounds["pers"] = ""
-NexusGestureMenuSounds["zombie"] = {
+DathusGestureMenuSounds = {}
+DathusGestureMenuSounds["dance"] = ""
+DathusGestureMenuSounds["muscle"] = ""
+DathusGestureMenuSounds["robot"] = ""
+DathusGestureMenuSounds["pers"] = ""
+DathusGestureMenuSounds["zombie"] = {
 	["male"] = {
 		"vo/npc/male01/zombies01.wav",
 		"vo/npc/male01/zombies02.wav"
@@ -54,7 +54,7 @@ NexusGestureMenuSounds["zombie"] = {
 		"vo/npc/female01/zombies02.wav"
 	}
 }
-NexusGestureMenuSounds["agree"] = {
+DathusGestureMenuSounds["agree"] = {
 	["male"] = {
 		"vo/npc/male01/ok01.wav",
 		"vo/npc/male01/ok02.wav"
@@ -64,7 +64,7 @@ NexusGestureMenuSounds["agree"] = {
 		"vo/npc/female01/ok02.wav"
 	}
 }
-NexusGestureMenuSounds["disagree"] = {
+DathusGestureMenuSounds["disagree"] = {
 	["male"] = {
 		"vo/npc/male01/no01.wav",
 		"vo/npc/male01/no02.wav"
@@ -74,7 +74,7 @@ NexusGestureMenuSounds["disagree"] = {
 		"vo/npc/female01/no02.wav"
 	}
 }
-NexusGestureMenuSounds["salute"] = {
+DathusGestureMenuSounds["salute"] = {
 	["male"] = {
 		"vo/npc/male01/hi01.wav",
 		"vo/npc/male01/hi02.wav"
@@ -84,7 +84,7 @@ NexusGestureMenuSounds["salute"] = {
 		"vo/npc/female01/hi02.wav"
 	}
 }
-NexusGestureMenuSounds["bow"] = {
+DathusGestureMenuSounds["bow"] = {
 	["male"] = {
 		"vo/npc/male01/squad_affirm01.wav",
 		"vo/npc/male01/squad_affirm02.wav",
@@ -108,7 +108,7 @@ NexusGestureMenuSounds["bow"] = {
 		"vo/npc/female01/squad_affirm09.wav"
 	}
 }
-NexusGestureMenuSounds["wave"] = {
+DathusGestureMenuSounds["wave"] = {
 	["male"] = {
 		"vo/npc/male01/hellodrfm01.wav",
 		"vo/npc/male01/hellodrfm02.wav"
@@ -118,7 +118,7 @@ NexusGestureMenuSounds["wave"] = {
 		"vo/npc/female01/hellodrfm02.wav"
 	}
 }
-NexusGestureMenuSounds["becon"] = {
+DathusGestureMenuSounds["becon"] = {
 	["male"] = {
 		"vo/coast/odessa/male01/stairman_follow01.wav",
 		"vo/coast/odessa/male01/stairman_follow03.wav"
@@ -128,7 +128,7 @@ NexusGestureMenuSounds["becon"] = {
 		"vo/coast/odessa/female01/stairman_follow03.wav"
 	}
 }
-NexusGestureMenuSounds["halt"] = {
+DathusGestureMenuSounds["halt"] = {
 	["male"] = {
 		"vo/npc/male01/stopitfm.wav"
 	},
@@ -136,7 +136,7 @@ NexusGestureMenuSounds["halt"] = {
 		"vo/npc/female01/stopitfm.wav"
 	}
 }
-NexusGestureMenuSounds["group"] = {
+DathusGestureMenuSounds["group"] = {
 	["male"] = {
 		"vo/npc/male01/squad_away01.wav",
 		"vo/npc/male01/squad_away02.wav",
@@ -148,7 +148,7 @@ NexusGestureMenuSounds["group"] = {
 		"vo/npc/female01/squad_away03.wav"
 	}
 }
-NexusGestureMenuSounds["forward"] = {
+DathusGestureMenuSounds["forward"] = {
 	["male"] = {
 		"vo/npc/male01/letsgo01.wav",
 		"vo/npc/male01/letsgo02.wav"
@@ -158,7 +158,7 @@ NexusGestureMenuSounds["forward"] = {
 		"vo/npc/female01/letsgo02.wav"
 	}
 }
-NexusGestureMenuSounds["cheer"] = {
+DathusGestureMenuSounds["cheer"] = {
 	["male"] = {
 		"vo/coast/odessa/male01/nlo_cheer01.wav",
 		"vo/coast/odessa/male01/nlo_cheer02.wav",
@@ -171,7 +171,7 @@ NexusGestureMenuSounds["cheer"] = {
 		"vo/coast/odessa/female01/nlo_cheer03.wav"
 	}
 }
-NexusGestureMenuSounds["laugh"] = {
+DathusGestureMenuSounds["laugh"] = {
 	["male"] = {
 		"vo/npc/Barney/ba_laugh01.wav",
 		"vo/npc/Barney/ba_laugh02.wav",

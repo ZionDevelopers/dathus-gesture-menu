@@ -1,7 +1,7 @@
 --[[ 
- Nexus Gesture Menu
+ Dathus' Gesture Menu
  
- Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+ Copyright (c) 2013-2023 Dathus [BR] <http://www.Dathusbr.net>
  
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -17,25 +17,25 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
  $Id$
- Version 1.2.0 by Nexus [BR] on 29-05-2013 03:34 PM
+ Version 1.3.X by Dathus [BR] on 2023-06-05 08:00 PM (GMT -03)
 ]]
 
 -- Add Command
-concommand.Add("NexusGMRegisterKey", function(ply, com, args)
+concommand.Add("DathusGMRegisterKey", function(ply, com, args)
 	-- If Key Pressed
-	if ply.NexusGMKeyID ~= nil then
+	if ply.DathusGMKeyID ~= nil then
 		-- Remove Keypad ID
-		numpad.Remove( ply.NexusGMKeyID )
+		numpad.Remove( ply.DathusGMKeyID )
 	end
 	
 	-- Perform KeyPress Action
-	ply.NexusGMKeyID = numpad.OnDown(ply, tonumber(args[1]), "NexusGMOpen")	
+	ply.DathusGMKeyID = numpad.OnDown(ply, tonumber(args[1]), "DathusGMOpen")	
 end)
 
 -- Register Keypad Button
-numpad.Register("NexusGMOpen", function (ply)
+numpad.Register("DathusGMOpen", function (ply)
 	-- Start Connection			
-	net.Start("NexusGestureMenuOpen")
+	net.Start("DathusGestureMenuOpen")
 	-- Send Command To Player
 	net.Send(ply)		
 	return true

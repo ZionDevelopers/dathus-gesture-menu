@@ -1,7 +1,7 @@
 --[[ 
- Nexus Gesture Menu
+ Dathus' Gesture Menu
  
- Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+ Copyright (c) 2013-2023 Dathus [BR] <http://www.Dathusbr.net>
  
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -17,19 +17,19 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
  $Id$
- Version 1.2.1 by Nexus [BR] on 30-07-2013 10:38 AM
+ Version 1.3.X by Dathus [BR] on 2023-06-05 08:00 PM (GMT -03)
 ]]
 
 -- Add Hook for MenuPar Polulate
 hook.Add( "PopulateMenuBar", "", function( menubar )
 
-	-- Get / Add Context Menu Bar: Nexus Gestures
-	local mbar = menubar:AddOrGetMenu( "Nexus Gestures" )
+	-- Get / Add Context Menu Bar: Dathus Gesture Menu
+	local mbar = menubar:AddOrGetMenu( "Dathus' Gesture Menu" )
 	local ChatCommand = ""
 	local bt = nil
 	
 	-- Loop on Act List
-	for Command, Label in pairs(NexusGestureMenuOptions) do		
+	for Command, Label in pairs(DathusGestureMenuOptions) do		
 		-- If Command is Valid
 		if(Command ~= nil) then
 			-- Remove Spaces
@@ -44,6 +44,6 @@ hook.Add( "PopulateMenuBar", "", function( menubar )
 	
 	mbar:AddSpacer()
 	
-	mbar:AddCVar( "Gestures Loop", "NexusGMLoop", "1", "0" )
-	mbar:AddCVar( "Gestures Sound", "NexusGMSound", "1", "0" )		
+	mbar:AddCVar( "Gestures Loop", "DathusGMLoop", "1", "0" )
+	mbar:AddCVar( "Gestures Sound", "DathusGMSound", "1", "0" )		
 end )

@@ -1,7 +1,7 @@
 --[[ 
- Nexus Gesture Menu
+ Dathus' Gesture Menu
  
- Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+ Copyright (c) 2013-2023 Dathus [BR] <http://www.Dathusbr.net>
  
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -17,11 +17,11 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
  $Id$
- Version 1.2.1 by Nexus [BR] on 22-07-2013 10:02 AM
+ Version 1.3.X by Dathus [BR] on 2023-06-05 08:00 PM (GMT -03)
 ]]
 
 -- Setup Sound Function
-local function NexusGesturePlaySound(len, ply)
+local function DathusGesturePlaySound(len, ply)
 	-- Get Sounds Table
 	local sounds = net.ReadTable()
 	-- Get Player Model
@@ -42,4 +42,4 @@ local function NexusGesturePlaySound(len, ply)
 end
 
 -- Play Sound
-net.Receive("NexusGestureMenuPlaySound", NexusGesturePlaySound)
+net.Receive("DathusGestureMenuPlaySound", DathusGesturePlaySound)

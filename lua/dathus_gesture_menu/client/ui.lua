@@ -1,7 +1,7 @@
 --[[ 
- Nexus Gesture Menu
+ Dathus' Gesture Menu
  
- Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+ Copyright (c) 2013-2023 Dathus [BR] <http://www.Dathusbr.net>
  
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
  $Id$
- Version 1.2.0 by Nexus [BR] on 29-05-2013 03:34 PM
+ Version 1.3.X by Dathus [BR] on 2023-06-05 08:00 PM (GMT -03)
 ]]
 
 -- Setup Vars
@@ -29,11 +29,11 @@ local function DoGesture(gesture)
 	-- Check if Player are Taunting
 	if not LocalPlayer():IsPlayingTaunt() then
 		-- If there is Sound to Play
-		if NexusGestureMenuSounds[gesture] ~= "" and GetConVar("NexusGMSound"):GetInt() == 1 then
+		if DathusGestureMenuSounds[gesture] ~= "" and GetConVar("DathusGMSound"):GetInt() == 1 then
 			-- Start Packet
-			net.Start("NexusGestureMenuPlaySound")
+			net.Start("DathusGestureMenuPlaySound")
 			-- Send Soudns Table
-			net.WriteTable(NexusGestureMenuSounds[gesture])
+			net.WriteTable(DathusGestureMenuSounds[gesture])
 			-- Send to the Server
 			net.SendToServer()
 		end
@@ -45,9 +45,9 @@ end
 
 -- Setup Loop
 local function GestureLoop()
-	if GetConVar("NexusGMLoop"):GetInt() == 1 and not LocalPlayer():IsPlayingTaunt() then
+	if GetConVar("DathusGMLoop"):GetInt() == 1 and not LocalPlayer():IsPlayingTaunt() then
 		DoGesture(loopCurrentGesture)
-	elseif GetConVar("NexusGMLoop"):GetInt() == 0 then
+	elseif GetConVar("DathusGMLoop"):GetInt() == 0 then
 		loopGesture = false
 		loopCurrentGesture = ""
 		timer.Destroy("loopGesture")	
@@ -57,16 +57,16 @@ end
 -- Setup Do Gesture Function
 function ProcessGesture(gesture)
 	-- Check if Loop is Turned OFF
-	if GetConVar("NexusGMLoop"):GetInt() == 0 and loopGesture == false then
+	if GetConVar("DathusGMLoop"):GetInt() == 0 and loopGesture == false then
 		-- Run ACT
 		DoGesture(gesture)
-	elseif GetConVar("NexusGMLoop"):GetInt() == 1 and loopGesture == false then
+	elseif GetConVar("DathusGMLoop"):GetInt() == 1 and loopGesture == false then
 		loopGesture = true
 		loopCurrentGesture = gesture
 		-- Run ACT
 		DoGesture(gesture)
 		timer.Create("loopGesture", 0.5, 0, GestureLoop)
-	elseif GetConVar("NexusGMLoop"):GetInt() == 0 and loopGesture == true then
+	elseif GetConVar("DathusGMLoop"):GetInt() == 0 and loopGesture == true then
 		loopGesture = false
 		loopCurrentGesture = ""
 		timer.Destroy("loopGesture")
@@ -74,7 +74,7 @@ function ProcessGesture(gesture)
 end
 
 -- Setup Gesture Menu Action	
-local function NexusGestureMenuAction(len)
+local function DathusGestureMenuAction(len)
 	-- Get Command
 	local Command = net.ReadString()
 	-- Run ACT
@@ -82,18 +82,18 @@ local function NexusGestureMenuAction(len)
 end
 
 -- Setup Gesture Menu Action	
-local function NexusGestureMenuOpen(len)
+local function DathusGestureMenuOpen(len)
 	-- Run Open Menu
-	RunConsoleCommand("nexus_gesturemenu")
+	RunConsoleCommand("dathus_gesture_menu")
 end
 
 -- Start Gesture Menu Action
-net.Receive("NexusGestureMenuAction", NexusGestureMenuAction)
+net.Receive("DathusGestureMenuAction", DathusGestureMenuAction)
 -- Start Gesture Menu Action
-net.Receive("NexusGestureMenuOpen", NexusGestureMenuOpen)
+net.Receive("DathusGestureMenuOpen", DathusGestureMenuOpen)
 
 -- Setup Gesture Menu
-local function OpenNexusGestureMenu()
+local function OpenDathusGestureMenu()
 
 	-- If Gesture Menu is already loaded
 	if GestureMenu == nil then
@@ -101,7 +101,7 @@ local function OpenNexusGestureMenu()
 		local MenuHeight = 40
 		
 		-- Loop on Act List
-		for Command, Label in pairs(NexusGestureMenuOptions) do
+		for Command, Label in pairs(DathusGestureMenuOptions) do
 			-- If Command is Valid
 			if Command ~= nil then
 				-- Increase the Menu Height
@@ -113,14 +113,14 @@ local function OpenNexusGestureMenu()
 		local GestureMenu = vgui.Create("DFrame")
 		GestureMenu:SetPos((ScrW()/4)-100,(ScrH()/2)-(MenuHeight/2))
 		GestureMenu:SetSize(220, MenuHeight)
-		GestureMenu:SetTitle("Nexus Gesture Menu")
+		GestureMenu:SetTitle("Dathus' Gesture Menu")
 		GestureMenu:SetDeleteOnClose(true)
 		
 		-- Reset I Counter
 		i = 0
 		
 		-- Loop on Act List
-		for Command, Label in pairs(NexusGestureMenuOptions) do
+		for Command, Label in pairs(DathusGestureMenuOptions) do
 			-- If Command is Valid
 			if(Command ~= nil) then
 				-- Remove Spaces
@@ -147,15 +147,15 @@ local function OpenNexusGestureMenu()
 		local loop = vgui.Create("DCheckBoxLabel", GestureMenu)
 		loop:SetPos(50, MenuHeight-30)
 		loop:SetText("Loop") 
-		loop:SetConVar("NexusGMLoop")
-		loop:SetValue(tonumber(GetConVar("NexusGMLoop"):GetInt()))  
+		loop:SetConVar("DathusGMLoop")
+		loop:SetValue(tonumber(GetConVar("DathusGMLoop"):GetInt()))  
 		loop:SizeToContents()
 		
 		local sound = vgui.Create("DCheckBoxLabel", GestureMenu)
 		sound:SetPos(110, MenuHeight-30)
 		sound:SetText("Sound") 
-		sound:SetConVar("NexusGMSound")
-		sound:SetValue(tonumber(GetConVar("NexusGMSound"):GetInt()))  
+		sound:SetConVar("DathusGMSound")
+		sound:SetValue(tonumber(GetConVar("DathusGMSound"):GetInt()))  
 		sound:SizeToContents()
 		
 		-- Finish to Setup Gesture Menu Window
@@ -169,4 +169,4 @@ local function OpenNexusGestureMenu()
 end
 
 -- Add Gesture Menu Command
-concommand.Add("nexus_gesturemenu", OpenNexusGestureMenu)
+concommand.Add("dathus_gesture_menu", OpenDathusGestureMenu)

@@ -1,7 +1,7 @@
 --[[ 
- Nexus Gesture Menu
+ Dathus' Gesture Menu
  
- Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+ Copyright (c) 2013-2023 Dathus [BR] <http://www.Dathusbr.net>
  
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -17,9 +17,8 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
  $Id$
- Version 1.2.0 by Nexus [BR] on 29-05-2013 03:34 PM
+ Version 1.3.X by Dathus [BR] on 2023-06-05 08:00 PM (GMT -03)
 ]]
-
 
 -- Setup Gesture by Chat
 local function GestureByChat (ply, text, isTeamChat) 
@@ -54,7 +53,7 @@ local function GestureByChat (ply, text, isTeamChat)
 		end
 		
 		-- Loop on all Acts
-		for Gesture, Label in pairs(NexusGestureMenuOptions) do
+		for Gesture, Label in pairs(DathusGestureMenuOptions) do
 			-- Remove Spaces
 			Test = string.Replace(Label, " ", "")
 			-- Convert string to Lower
@@ -63,7 +62,7 @@ local function GestureByChat (ply, text, isTeamChat)
 			-- if This Act is the User Command
 			if command == Test then	
 				-- Start Connection			
-				net.Start("NexusGestureMenuAction")
+				net.Start("DathusGestureMenuAction")
 				-- Write Command
 				net.WriteString(Gesture)
 				
@@ -82,4 +81,4 @@ local function GestureByChat (ply, text, isTeamChat)
 end
 
 -- Add PlayerSay Hook for Gesture by Chat
-hook.Add("PlayerSay", "NexusGestureMenuCommands", GestureByChat)
+hook.Add("PlayerSay", "DathusGestureMenuCommands", GestureByChat)
