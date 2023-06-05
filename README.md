@@ -6,7 +6,7 @@ A [Garry's Mod][] Addon that show a Gesture Menu with all ACT Commands Know.
 ### Features
 * Activated by any key.
 * 16 Gestures.
-* Panel menu with key bind option (Q Menu -> Options -> Nexus Gesture Menu -> Key).
+* Panel menu with key bind option (Q Menu -> Options -> Dathus' Gesture Menu -> Key).
 * Chat commands support like: /dance /sexydance /hellyeah and etc.
 * Almost all gesture have sound now, It do a different sound if your model is Male or Female.
 * Loop Feature.
@@ -27,7 +27,7 @@ Dathus' Gesture Menu is now available via the Steam Workshop! Go to [its Worksho
 Simply clone this repository into your `addons` folder:
 
     cd "%programfiles(x86)%/Steam/SteamApps/common/GarrysMod/garrysmod/addons"
-    git clone https://github.com/ZionDevelopers/gesturemenu.git gesturemenu
+    git clone https://github.com/ZionDevelopers/dathus-gesture-menu.git dathus-gesture-menu
 
 ### License
 
