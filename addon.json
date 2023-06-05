@@ -1,0 +1,23 @@
+{
+	"title"		:	"Dathus' Gesture Menu",
+	"type"		:	"tool",
+	"tags"		:	["roleplay", "fun" ],
+	"description":	"Dathus' Gesture Menu is a addon to play gestures with loop, sounds, admin commands support.",
+	"ignore"	:
+	[
+		"*.svn*",
+		"*.txt",
+		".git*",
+		".project",
+		".gitignore",
+		".buildpath",
+		".settings*",
+		"git-hooks-pre-commit",
+		"gitrid.sh",
+		"LICENSE",
+		"*.md",
+		"*.bat",
+		"nbproject*",
+		"COPYING"
+	]
+}
