@@ -1,7 +1,7 @@
 "AddonInfo"
 {
 	"name"			"Dathus' Gesture Menu"
-	"version"		"1.1"
+	"version"		"1.3.0"
 	"author_name"		"Dathus [BR]"
 	"info"			"A simple GUI for the with all ACT Command know working with Garry's Mod 13, With Feature like, Menu Bind Key and chat commands."
 }
