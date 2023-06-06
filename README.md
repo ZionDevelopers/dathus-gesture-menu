@@ -14,7 +14,7 @@ A [Garry's Mod][] Addon that show a Gesture Menu with all ACT Commands Know.
 * Admin gesture command all players: /dance * or /dance all, it works with any Gesture.
 * To stop/start Sound/Loop just select the Checkbox Sound or Loop.
 * New "Fancy" context menu, Just press C button and go to Dathus' Gesture Menu.
-* Commands: DathusGMRegisterKey 0, DathusGMBindKey 0 to reset keybinding, dathus_gesture_menu open menu.
+* Commands: DathusGMRegisterKey 0, DathusGMBindKey 0 to reset key binding, dathus_gesture_menu open menu.
 
 ### Setup
 
