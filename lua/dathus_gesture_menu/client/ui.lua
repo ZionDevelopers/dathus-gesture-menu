@@ -1,7 +1,7 @@
 --[[ 
  Dathus' Gesture Menu
  
- Copyright (c) 2011 - 2024 Dathus [BR] <https://www.juliocesar.me>
+ Copyright (c) 2011 - 2025 Dathus [BR] <https://www.juliocesar.me>
  
  This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
  To view a copy of this license, visit Common Creative's Website. <https://creativecommons.org/licenses/by-nc-sa/4.0/>
